@@ -21,12 +21,22 @@ export class GamesService {
         return { headers: headers };
     }
 
+    // basic sample url
     private buildUrl(appendix: string): string {
         return `${this._config.rootUrl}${appendix}`;
     }
 
-    public getAll(): Observable<Game[]> {
+    // basic sample url
+    private buildDataUrl(appendix: string): string {
+        return `${this._config.rootUrlData}${appendix}`;
+    }
+
+   /* public getAll(): Observable<Game[]> {
         return this._http.get(this.buildUrl('api/boardgames/list')).map(response => (<Game[]>response.json()));
+    }*/
+
+    public getAll(): Observable<Game[]> {
+        return this._http.get(this.buildDataUrl('events')).map(response => (<Game[]>response.json()));
     }
 
     public getGameCount(): Observable<number> {
